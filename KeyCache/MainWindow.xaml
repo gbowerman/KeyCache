@@ -1,0 +1,33 @@
+﻿<Window x:Name="form1" x:Class="KeyCache.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Key Cache" Height="514.394" Width="767.613" Closing="Window_Closing" Icon="encrypt.ico" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}">
+    <Grid Margin="0,0,0,-5">
+        <ListView x:Name="LsView" Height="243" Margin="13,41,10,0" VerticalAlignment="Top" SelectionChanged="ListView_SelectionChanged">
+            <ListView.View>
+                <GridView AllowsColumnReorder="true">
+                    <GridViewColumn Header="Name" Width="200" DisplayMemberBinding="{Binding Path=Name}" />
+                    <GridViewColumn Header="ID" Width="200" DisplayMemberBinding="{Binding Path=ID}" />
+                    
+                    <GridViewColumn Header="Notes" Width="300" DisplayMemberBinding="{Binding Path=Notes}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Label Content="Name:" HorizontalAlignment="Left" Height="32" Margin="13,289,0,0" VerticalAlignment="Top" Width="87" FontWeight="Bold"/>
+        <TextBox x:Name="nameBox" HorizontalAlignment="Left" Height="23" Margin="81,294,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="567"/>
+        <Label Content="ID:" HorizontalAlignment="Left" Margin="13,323,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <TextBox x:Name="idBox" HorizontalAlignment="Left" Height="23" Margin="81,326,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="567"/>
+        <Label Content="Password:" HorizontalAlignment="Left" Margin="13,354,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.328,0.602" FontWeight="Bold"/>
+        <TextBox x:Name="passwordBox" HorizontalAlignment="Left" Height="23" Margin="81,354,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="567"/>
+        <Label Content="Notes:" HorizontalAlignment="Left" Margin="13,385,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <TextBox x:Name="noteBox" HorizontalAlignment="Left" Margin="80,385,0,13" TextWrapping="Wrap" Width="568"/>
+        <Button x:Name="deleteButton" Content="Delete" HorizontalAlignment="Left" Margin="663,416,0,0" VerticalAlignment="Top" Width="75" Click="deleteButton_Click" FontWeight="Bold"/>
+        <Button x:Name="addButton" Content="Add" HorizontalAlignment="Left" Margin="663,441,0,0" VerticalAlignment="Top" Width="75" Click="addButton_Click" FontWeight="Bold"/>
+        <Button x:Name="modifyButton" Content="Modify" HorizontalAlignment="Left" Margin="663,391,0,0" VerticalAlignment="Top" Width="75" Click="modifyButton_Click" FontWeight="Bold"/>
+        <TextBox x:Name="filterBox" HorizontalAlignment="Left" Height="18" Margin="595,15,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="141" KeyUp="filterBox_KeyUp"/>
+        <Button x:Name="openButton" Content="Open File" HorizontalAlignment="Left" Margin="663,297,0,0" VerticalAlignment="Top" Width="75" Click="openButton_Click" FontWeight="Bold"/>
+        <PasswordBox x:Name="passPhraseBox" PasswordChar="*" HorizontalAlignment="Left" Margin="90,15,0,0" VerticalAlignment="Top" Width="446" KeyUp="passPhraseBox_KeyUp" IsInactiveSelectionHighlightEnabled="True"/>
+        <Label Content="Filter:" HorizontalAlignment="Left" Margin="551,10,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label Content="Pass Phrase:" HorizontalAlignment="Left" Margin="13,10,0,0" VerticalAlignment="Top" Width="77" RenderTransformOrigin="0.427,1.432" FontWeight="Bold"/>
+    </Grid>
+</Window>
