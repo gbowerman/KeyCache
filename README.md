@@ -1,5 +1,5 @@
 # KeyCache
-Windows tool to securely store passwords and secrets - uses AES 256
+Windows tool to securely store passwords and secrets with AES-256 encryption.
 
 This tool is a password vault designed for saving personal passwords and secrets. It provides quick access to your passwords and AES-256 security.
 
