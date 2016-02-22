@@ -1,17 +1,13 @@
-﻿// KeyCache - password storage system
-// To do:
-//   - Add tooltips
-//   - Add "Save As" option
-//   DONE - Figure out why matching not working correctly after filter followed by Add
-//   DONE - Reconcile filter with Modify
-//   DONE - Reconcile filter with Delete
-//   DONE - Prevent duplicates
-//   DONE - sort on load
-//   - support newlines in Notes section
-//   DONE - Smarten up UI
-//   DONE - add icon
-
-
+﻿/* KeyCache - password storage desktop app for Windows, based on AES-256 encryption
+ https://github.com/gbowerman/KeyCache
+ Copyright (c) 2016, Guy Bowerman 
+ License: MIT
+ Contact: guybo@outlook.com
+ To do:
+   - Add tooltips
+   - Add "Save As" option
+   - support newlines in Notes section
+*/
 using System;
 using System.Collections;
 using System.Deployment.Application;
