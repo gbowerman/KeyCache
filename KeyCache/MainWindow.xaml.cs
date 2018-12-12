@@ -519,6 +519,10 @@ namespace KeyCache
             {
                 if (passPhraseBox.Password.Length < 1)
                 {
+					if (changingPassPhrase == true) // ignore the first Return key in case it's just pressing Enter to the Re-enter prompt
+					{
+						return;
+					}
                     MessageBox.Show("No pass phrase set.", "Missing pass phrase", MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
@@ -537,7 +541,6 @@ namespace KeyCache
                         changingPassPhrase = true;
                         tempPassPhrase = passPhraseBox.Password;
                         passPhraseBox.Password = "";
-                        passPhraseBox.Focus();
                         return;
                     }
                 }
