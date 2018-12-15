@@ -224,12 +224,46 @@ namespace KeyCache
             unsavedChanges = false;
         }
 
-        /// <summary>
-        /// Before writing the file to save, add a hash of pass phrase and filename
-        /// - the hash will be use to verify pass phrase when reading file in
-        /// </summary>
-        /// <returns></returns>
-        private bool addSHAandWriteFile()
+		/// <summary>
+		/// Export string to file - don't encrypt
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void exportFile(string textBuffer)
+		{
+			Microsoft.Win32.SaveFileDialog saveFd = new Microsoft.Win32.SaveFileDialog();
+			saveFd.DefaultExt = ".txt"; // Default file extension
+			saveFd.Filter = "Text Files|*.txt|All Files|*.*";
+			saveFd.Title = "Export plaintext File";
+
+			// Show save file dialog box
+			Nullable<bool> result = saveFd.ShowDialog();
+
+			// Process save file dialog box results
+			if (result == true)
+			{
+				// Save document
+				fileName = saveFd.FileName;
+			}
+			else return;
+
+			try
+			{
+				File.WriteAllText(fileName, textBuffer);
+				MessageBox.Show("Plaintext file " + fileName + " saved.", "File Saved", MessageBoxButton.OK, MessageBoxImage.Information);
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show("Saving plaintext file " + fileName + " failed:" + ex.Message, "Save failed", MessageBoxButton.OK, MessageBoxImage.Error);
+			}
+		}
+
+		/// <summary>
+		/// Before writing the file to save, add a hash of pass phrase and filename
+		/// - the hash will be use to verify pass phrase when reading file in
+		/// </summary>
+		/// <returns></returns>
+		private bool addSHAandWriteFile()
         {
             // now combine the salt and fileBuffer
             byte[] combinedBuffer = null;
@@ -436,13 +470,32 @@ namespace KeyCache
             }
         }
 
-        /// <summary>
-        /// LoadFile - Reads encrypted file into memory
-        /// - validates password against frontdoor hash
-        /// - decryptes file to text
-        /// - populates record list from text buffer
-        /// </summary>
-        private void LoadFile()
+		/// <summary>
+		/// Export data in plain text
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void exportButton_Click(object sender, RoutedEventArgs e)
+		{
+			string textBuffer = "";
+
+			// loop through list assembling text file
+			foreach (Keys key in keyCacheList)
+			{
+				string line = key.Name + "\t" + key.ID + "\t" + key.Password + "\t" + key.Notes + "\r\n";
+				//MessageBox.Show("Line: " + line);
+				textBuffer += line;
+			}
+			exportFile(textBuffer);
+		}
+
+		/// <summary>
+		/// LoadFile - Reads encrypted file into memory
+		/// - validates password against frontdoor hash
+		/// - decryptes file to text
+		/// - populates record list from text buffer
+		/// </summary>
+		private void LoadFile()
         {
             // first validate pass phrase against front lock hash (first 64 bytes)
             frontLockHash = getFrontLockSha(passPhrase, Path.GetFileName(fileName));
@@ -467,7 +520,6 @@ namespace KeyCache
             
             try
             {
-
                 string textBuffer = AESDecryptBytes(cryptBuffer, passPhrase, frontLockHash);
            
                 // now load text buffer into keyCacheList
@@ -618,8 +670,7 @@ namespace KeyCache
             }
 
         }
-
-    }
+	}
 }
 
 /// <summary>

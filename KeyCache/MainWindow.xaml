@@ -24,6 +24,7 @@
         <Button x:Name="deleteButton" Content="Delete" HorizontalAlignment="Left" Margin="663,416,0,0" VerticalAlignment="Top" Width="75" Click="deleteButton_Click" FontWeight="Bold"/>
         <Button x:Name="addButton" Content="Add" HorizontalAlignment="Left" Margin="663,441,0,0" VerticalAlignment="Top" Width="75" Click="addButton_Click" FontWeight="Bold"/>
         <Button x:Name="modifyButton" Content="Modify" HorizontalAlignment="Left" Margin="663,391,0,0" VerticalAlignment="Top" Width="75" Click="modifyButton_Click" FontWeight="Bold"/>
+        <Button x:Name="exportButton" Content="Export" HorizontalAlignment="Left" Margin="663,366,0,0" VerticalAlignment="Top" Width="75" Click="exportButton_Click" FontWeight="Bold"/>
         <TextBox x:Name="filterBox" HorizontalAlignment="Left" Height="18" Margin="595,15,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="141" KeyUp="filterBox_KeyUp"/>
         <Button x:Name="openButton" Content="Open File" HorizontalAlignment="Left" Margin="663,297,0,0" VerticalAlignment="Top" Width="75" Click="openButton_Click" FontWeight="Bold"/>
         <PasswordBox x:Name="passPhraseBox" PasswordChar="*" HorizontalAlignment="Left" Margin="90,15,0,0" VerticalAlignment="Top" Width="446" KeyUp="passPhraseBox_KeyUp" IsInactiveSelectionHighlightEnabled="True"/>
