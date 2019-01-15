@@ -89,7 +89,7 @@ def main():
             ret = kv_client.vaults.delete(args.group, args.delete)
             print(f'Key vault: {args.delete} deleted.')
     except Exception as ex:
-        print(ex)            
+        print(ex)
 
 
 if __name__ == "__main__":
