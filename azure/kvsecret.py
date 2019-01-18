@@ -41,7 +41,7 @@ def main():
                                               secret=app_secret,
                                               tenant=tenant_id)
     
-    # get a key vault client
+    # instantiate a key vault client
     client = KeyVaultClient(credentials)
 
     try:
